@@ -1,1 +1,41 @@
-<p>Pipe home works!</p>
+<table class="table">
+    <thead>
+      <tr id="table-1-head">
+        <th scope="col" (click)="sortby('id',$event,'table-1-head')" class="tbl-head" id='t-id'>#</th>
+        <th scope="col" (click)="sortby('name',$event,'table-1-head')" class="tbl-head" id='t-name'>name</th>
+        <th scope="col" (click)="sortby('email',$event,'table-1-head')" class="tbl-head" id='t-email'>email</th> 
+        <th scope="col" (click)="sortby('phone',$event,'table-1-head')" class="tbl-head" id='t-phone'>phone</th>
+        <th scope="col" (click)="sortby('username',$event,'table-1-head')" class="tbl-head" id='t-username'>username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of userList; index as i">
+        <th scope="row">{{list?.id}}</th>
+        <td>{{list?.name}}</td>
+        <td>{{list?.email}}</td>
+        <td>{{list?.phone}}</td>
+        <td>{{list?.username}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="table">
+    <thead>
+      <tr id="table-2-head">
+        <th scope="col" (click)="sortby1('id',$event,'table-2-head')" class="tbl-head" id='t-id'>#</th>
+        <th scope="col" (click)="sortby1('name',$event,'table-2-head')" class="tbl-head" id='t-name'>name</th>
+        <th scope="col" (click)="sortby1('email',$event,'table-2-head')" class="tbl-head" id='t-email'>email</th> 
+        <th scope="col" (click)="sortby1('body',$event,'table-2-head')" class="tbl-head" id='t-body'>body</th>
+        <th scope="col" (click)="sortby1('postId',$event,'table-2-head')" class="tbl-head" id='t-postId'>postId</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of commentsList; index as i">
+        <th scope="row">{{list?.id}}</th>
+        <td>{{list?.name}}</td>
+        <td>{{list?.email}}</td>
+        <td>{{list?.body}}</td>
+        <td>{{list?.postId}}</td>
+      </tr>
+    </tbody>
+  </table>

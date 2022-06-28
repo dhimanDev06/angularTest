@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { PipetestRoutingModule } from './pipetest-routing.module';
 import { HomeComponent } from './home/home.component';
+import { CommonService } from './common.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -11,7 +13,11 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     CommonModule,
-    PipetestRoutingModule
+    PipetestRoutingModule,
+    HttpClientModule
+  ],
+  providers:[
+    CommonService
   ]
 })
 export class PipetestModule { }
