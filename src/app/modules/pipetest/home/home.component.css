@@ -1,0 +1,30 @@
+.img-up{
+    width: 14px !important; 
+    height: 12px !important; 
+    background-image: url('./../../../../assets/long-arrow-up.png') !important; 
+    display:block;
+}
+.img-down{
+    width: 14px !important ;
+    height: 19px !important;
+    background-image: url('./../../../../assets/long-arrow-down.png') !important; 
+    display:block;
+}
+.icone{
+    width: 14px;
+    height: 13px;
+    background-image: url('./../../../../assets/change.png'); 
+    display:block;
+}
+.tbl-head{
+    display: flex;
+}
+.tbl-head span:nth-child(1){
+    /* width: 70%; */
+}
+.tbl-head span:nth-child(2){
+    /* width: 30%; */
+}
+.tbl-head span{
+    pointer-events: none;
+}

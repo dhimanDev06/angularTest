@@ -7,24 +7,23 @@ export class CommonService {
   isDesc: boolean = false;
   column: string = '';
   dynamicSortby(property:string,array:any,event:any,tableId:string){
-
     let parentClass = document.getElementById(tableId) as HTMLElement;
     for (let index = 0; index < parentClass.children.length; index++) {
-      if(parentClass.children[index].getAttribute('id') != event.target.id){
-        if(parentClass.children[index].classList.contains('up')){
-          parentClass.children[index].classList.remove('up')
+      if(parentClass.children[index].getElementsByClassName('tbl-head')[0].getAttribute('id') != event.target.id){
+        if(parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.contains('img-up')){
+          parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.remove('img-up')
         }
 
-        if(parentClass.children[index].classList.contains('down')){
-          parentClass.children[index].classList.remove('down')
+        if(parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.contains('img-down')){
+          parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.remove('img-down')
         }
       }else{
-        if(parentClass.children[index].classList.contains('down')){
-          parentClass.children[index].classList.remove('down')
-          parentClass.children[index].classList.add('up')
+        if(parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.contains('img-down')){
+          parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.remove('img-down')
+          parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.add('img-up')
         }else{
-            parentClass.children[index].classList.remove('up')
-            parentClass.children[index].classList.add('down')
+            parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.remove('img-up')
+            parentClass.children[index].getElementsByClassName('tbl-head')[0].getElementsByClassName('icone')[0].classList.add('img-down')
         } 
       }
     }

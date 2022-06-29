@@ -1,11 +1,31 @@
 <table class="table">
     <thead>
       <tr id="table-1-head">
-        <th scope="col" (click)="sortby('id',$event,'table-1-head')" class="tbl-head" id='t-id'>#</th>
-        <th scope="col" (click)="sortby('name',$event,'table-1-head')" class="tbl-head" id='t-name'>name</th>
-        <th scope="col" (click)="sortby('email',$event,'table-1-head')" class="tbl-head" id='t-email'>email</th> 
-        <th scope="col" (click)="sortby('phone',$event,'table-1-head')" class="tbl-head" id='t-phone'>phone</th>
-        <th scope="col" (click)="sortby('username',$event,'table-1-head')" class="tbl-head" id='t-username'>username</th>
+        <th scope="col">
+          <div (click)="sortby('id',$event,'table-1-head')" class="tbl-head" id='t-id'>
+            <span>#</span><span class="icone"></span>
+          </div>
+        </th>
+        <th scope="col">
+          <div (click)="sortby('name',$event,'table-1-head')" class="tbl-head" id='t-name'>
+            <span>name</span><span class="icone"></span>
+          </div>
+        </th>
+        <th scope="col">
+          <div  (click)="sortby('email',$event,'table-1-head')" class="tbl-head" id='t-email'>
+            <span>email</span><span class="icone"></span>
+          </div>
+        </th> 
+        <th scope="col">
+          <div  (click)="sortby('phone',$event,'table-1-head')" class="tbl-head" id='t-phone'>
+            <span>phone</span><span class="icone"></span>
+          </div>
+        </th>
+        <th scope="col">
+          <div (click)="sortby('username',$event,'table-1-head')" class="tbl-head" id='t-username'>
+            <span>username</span><span class="icone"></span>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -22,11 +42,11 @@
   <table class="table">
     <thead>
       <tr id="table-2-head">
-        <th scope="col" (click)="sortby1('id',$event,'table-2-head')" class="tbl-head" id='t-id'>#</th>
-        <th scope="col" (click)="sortby1('name',$event,'table-2-head')" class="tbl-head" id='t-name'>name</th>
-        <th scope="col" (click)="sortby1('email',$event,'table-2-head')" class="tbl-head" id='t-email'>email</th> 
-        <th scope="col" (click)="sortby1('body',$event,'table-2-head')" class="tbl-head" id='t-body'>body</th>
-        <th scope="col" (click)="sortby1('postId',$event,'table-2-head')" class="tbl-head" id='t-postId'>postId</th>
+        <th scope="col" (click)="sortby1('id',$event,'table-2-head')" class="tbl-head d-flex" id='t-id'>#<span></span></th>
+        <th scope="col" (click)="sortby1('name',$event,'table-2-head')" class="tbl-head d-flex" id='t-name'>name<span></span></th>
+        <th scope="col" (click)="sortby1('email',$event,'table-2-head')" class="tbl-head d-flex" id='t-email'>email<span></span></th> 
+        <th scope="col" (click)="sortby1('body',$event,'table-2-head')" class="tbl-head d-flex" id='t-body'>body<span></span></th>
+        <th scope="col" (click)="sortby1('postId',$event,'table-2-head')" class="tbl-head d-flex" id='t-postId'>postId<span></span></th>
       </tr>
     </thead>
     <tbody>

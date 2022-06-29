@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getPostsAll();
     this.getCommentsAll();
+
   }
   getPostsAll() {
     this.service.getUsers().subscribe(res => {
@@ -34,6 +35,8 @@ export class HomeComponent implements OnInit {
     })
   }
   sortby(property:string,event:any,tbleId:string){
+    console.log();
+    
     this.userList  = this.service.dynamicSortby(property,this.userList,event,tbleId);
   }
   sortby1(property:string,event:any,tbleId:string){
