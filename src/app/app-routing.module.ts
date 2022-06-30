@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'directive',
     loadChildren: () => import('./modules/directive/directive.module').then(m => m.DirectiveModule)
+  },
+  {
+    path: 'change',
+    loadChildren: () => import('./modules/change/change.module').then(m => m.ChangeModule)
   }
 ];
 @NgModule({
