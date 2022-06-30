@@ -19,8 +19,6 @@ export class HomeComponent implements OnInit {
   commentsList:any;
   ngOnInit(): void {
     this.getPostsAll();
-    this.getCommentsAll();
-
   }
   getPostsAll() {
     this.service.getUsers().subscribe(res => {
@@ -52,4 +50,13 @@ export class HomeComponent implements OnInit {
       });
   }
 
+
+  divClick(){
+    console.log('divClick')
+  }
+
+  btnClick(){
+    console.log('btnClick');
+    this.getCommentsAll();
+  }
 }

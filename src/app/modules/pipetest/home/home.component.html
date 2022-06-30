@@ -39,7 +39,7 @@
     </tbody>
   </table>
 
-  <table class="table">
+  <!-- <table class="table">
     <thead>
       <tr id="table-2-head">
         <th scope="col" (click)="sortby1('id',$event,'table-2-head')" class="tbl-head d-flex" id='t-id'>#<span></span></th>
@@ -58,4 +58,7 @@
         <td>{{list?.postId}}</td>
       </tr>
     </tbody>
-  </table>
+  </table> -->
+  <div (click)="divClick()" class="bg-primary d-flex justify-content-center ">
+    <button type="button" class="p-5 m-5" (click)="btnClick();$event.stopPropagation()">CLick</button>
+  </div>

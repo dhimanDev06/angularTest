@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { delay, map, retry, retryWhen, scan, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -60,6 +61,22 @@ export class CommonService {
     return this.httpClient.get('https://reqres.in/api/unknown');
   } 
   getComments() {
-    return this.httpClient.get('http://jsonplaceholder.typicode.com/comments');
+    return this.httpClient.get('http://jsonplaceholder.typicode.com/comments').pipe(
+      map(val => {
+        if (val > 2) throw new Error("Invalid Value");
+        return val;
+      }),
+      retryWhen(error =>
+        error.pipe(
+          scan((acc, error) => {
+            if (acc > 5) throw error;
+            console.log("attempt " + acc);
+            return acc + 1;
+          }, 1),
+          delay(2000),
+          tap(() => console.log("Retrying ..."))
+        )
+      )
+      )
   }
 }
