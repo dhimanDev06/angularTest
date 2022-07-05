@@ -33,21 +33,39 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getValConcatMap:any = [];
   concatMapCall(){
     from([this.api.getPosts(),this.api.getRepos(),this.api.getList()])
       .pipe(concatMap(x => x))
-      .subscribe(x => console.log("concatMap ->",x))
+      .subscribe(x =>{ 
+      this.getValConcatMap.push(x);
+      console.log("concatMap ->",this.getValConcatMap);
+    })
+    setTimeout(() => {
+      from([this.api.getRepos(),this.api.getList(),this.api.getPosts()])
+      .pipe(switchMap(x => x))
+      .subscribe(x =>{ 
+      console.log("switchMap ->",x);
+    })
+    }, 5000);
+
   }
 
   mergeMapCall(){
+    let a:any = [];
     from([this.api.getPosts(),this.api.getRepos(),this.api.getList()])
     .pipe(mergeMap(x => x))
-    .subscribe(x => console.log("mergeMap ->",x))
+    .subscribe(x => {
+      a.push(x);
+      console.log("mergeMap ->",x,a);
+    })
   }
   
   normalApi(){
-    this.api.getPosts().subscribe(res =>{
-      console.log(res);
+    this.api.getPosts().pipe(map((res:any)=>{
+      return res.map((a:any)=>a.id)
+    })).subscribe(res =>{
+      console.log("getPosts",res);
     });
     this.api.getRepos().subscribe(res =>{
       console.log(res);
