@@ -1,19 +1,25 @@
 <div>
     <div class="input-group">
         <div class="input-group-prepend d-flex" *ngIf="checkedList.length>0">
-            <span class="input-group-text  m-2" *ngFor="let list of checkedList; let i = index" id="">{{list?.name}} <button type="button" class="btn-close" aria-label="Close" (click)="remove(list?.name)"></button></span>
+            <span class="input-group-text  m-2 p-0" *ngFor="let list of checkedList; let i = index" id="">
+                <button type="button" class="btn-close btn-sm" aria-label="Close" (click)="remove(list?.name)"></button>
+                <span class="text-name px-1">{{list?.name}}</span>
+                </span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="filterBy()" (click)="showDropDown = true">
+        <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="filterBy()"
+            (click)="showAll();showDropDown = true">
     </div>
     <div class="drop-show" *ngIf="showDropDown">
-        <label *ngFor="let a of list ; let i = index">
+        <label *ngFor="let a of list; let i = index">
             <div class="d-flex  justify-content-between" *ngIf="!a.checked">
-                <span>{{a.name}}</span><button class="btn btn-secondary" (click)="getSelectedValue(true,a.name,i)">add</button>
+                <span>{{a.name}}</span><button class="btn btn-secondary"
+                    (click)="getSelectedValue(true,a.name,i)">add</button>
             </div>
-            <div class="d-flex  justify-content-between" *ngIf="a.checked">
-                <span>{{a.name}}</span><button class="btn btn-danger" (click)="getSelectedValue(false,a.name,i)">remove</button>
+            <div class="d-flex justify-content-between active bg-info" *ngIf="a.checked">
+                <span>{{a.name}}</span><button class="btn btn-danger"
+                    (click)="getSelectedValue(false,a.name,i)">remove</button>
             </div>
         </label>
-      <button type="button"  class="btn btn-primary"(click)="showDropDown = false">Validate</button>
+        <button type="button" class="btn btn-primary" (click)="showDropDown = false">Validate</button>
     </div>
 </div>

@@ -33,6 +33,7 @@ export class AutoserachcutomComponent implements OnInit {
     } else {
       this.reset();
     }
+    this.alignData();    
   }
 
   reset() {
@@ -40,19 +41,23 @@ export class AutoserachcutomComponent implements OnInit {
   }
   getSelectedValue(status: Boolean, value: String, index: any) {
     let Object = { name: value, checked: status };
-    this.list[index] = Object;
     if (status) {
       let isExist = this.checkedList.filter((a: any) => a.name == Object.name);
       if (isExist.length == 0) {
         this.checkedList.push(Object);
       }
     } else {
-      var index = this.checkedList.indexOf(Object);
-      this.checkedList.splice(index, 1);
+      this.checkedList = this.checkedList.filter((a:any)=> a.name != value);
     }
     this.list[index] = Object;
     this.currentSelected = { checked: status, name: value };
+    this.alignData();    
     this.backupSet(Object);
+  }
+  alignData(){
+    let selected:any = this.list.filter((a:any)=>a.checked);
+    let notSelected:any = this.list.filter((a:any)=>!a.checked);
+    this.list = [...selected,...notSelected]
   }
   backupSet(Object:any){
     let isExist = this.backup.filter((a: any) => a.name == Object.name);
@@ -60,7 +65,12 @@ export class AutoserachcutomComponent implements OnInit {
       isExist[0].checked = Object.checked;
     }
   }
-
+  showAll(){
+    console.log('showAll backup',this.backup);
+    console.log('showAll checkedList',this.checkedList);
+    console.log('showAll list',this.list);
+    
+  }
   shareCheckedList(item: any[]) {
     console.log("1", item);
   }
@@ -74,6 +84,6 @@ export class AutoserachcutomComponent implements OnInit {
     if (isExist.length > 0) {
       isExist[0].checked = false;
     }
-    //console.log('remove',isExist);
+    this.alignData();    
   }
 }

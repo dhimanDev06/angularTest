@@ -11,6 +11,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { FormsModule } from '@angular/forms';
 import { AutoserachComponent } from './autoserach/autoserach.component';
 import { AutoserachcutomComponent } from './autoserachcutom/autoserachcutom.component';
+import { FilterbycheckPipe } from './filterbycheck.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AutoserachcutomComponent } from './autoserachcutom/autoserachcutom.comp
     SwitchmapComponent,
     ConcatmapComponent,
     AutoserachComponent,
-    AutoserachcutomComponent
+    AutoserachcutomComponent,
+    FilterbycheckPipe
   ],
   imports: [
     CommonModule,
