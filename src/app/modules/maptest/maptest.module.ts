@@ -7,18 +7,26 @@ import { MapRoutingModule } from './map-routing.module';
 import { ApiService } from './api.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { FormsModule } from '@angular/forms';
+import { AutoserachComponent } from './autoserach/autoserach.component';
+import { AutoserachcutomComponent } from './autoserachcutom/autoserachcutom.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     SwitchmapComponent,
-    ConcatmapComponent
+    ConcatmapComponent,
+    AutoserachComponent,
+    AutoserachcutomComponent
   ],
   imports: [
     CommonModule,
     MapRoutingModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    AngularMultiSelectModule
   ],
   providers:[
     ApiService
