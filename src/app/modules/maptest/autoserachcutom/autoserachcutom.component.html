@@ -1,5 +1,5 @@
 <div>
-    <div class="input-group">
+    <div class="input-group" style="width: 500px;">
         <div class="input-group-prepend d-flex" *ngIf="checkedList.length>0">
             <span class="input-group-text  m-2 p-0" *ngFor="let list of checkedList; let i = index" id="">
                 <button type="button" class="btn-close btn-sm" aria-label="Close" (click)="remove(list?.name)"></button>
@@ -9,7 +9,16 @@
         <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="filterBy()"
             (click)="showAll();showDropDown = true">
     </div>
-    <div class="drop-show" *ngIf="showDropDown">
+    <div class="drop-show" *ngIf="showDropDown"  style="width: max-content; min-width: 300px;">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-start">
+                <p>Loading</p>
+            </div>
+            <div class="d-flex justify-content-between" >
+                <span *ngIf="checkedList.length>0">{{checkedList.length}} Selected <button type="button" class="btn-close btn-sm" aria-label="Close" (click)="removeAll()"></button></span>
+                <button type="button" class="btn btn-primary" [disabled]="checkedList.length>0 ? null: true " (click)="showDropDown = false">Done</button>
+            </div>
+        </div>
         <label *ngFor="let a of list; let i = index">
             <div class="d-flex  justify-content-between" *ngIf="!a.checked">
                 <span>{{a.name}}</span><button class="btn btn-secondary"
@@ -20,6 +29,5 @@
                     (click)="getSelectedValue(false,a.name,i)">remove</button>
             </div>
         </label>
-        <button type="button" class="btn btn-primary" (click)="showDropDown = false">Validate</button>
     </div>
 </div>

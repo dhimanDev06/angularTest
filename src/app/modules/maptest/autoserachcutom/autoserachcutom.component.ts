@@ -77,6 +77,11 @@ export class AutoserachcutomComponent implements OnInit {
   shareIndividualCheckedList(item: {}) {
     console.log("2", item);
   }
+  removeAll(){
+    this.checkedList = [];
+    this.list.map((a:any)=> a.checked = false);
+    this.alignData();    
+  }
 
   remove(item: any) {
     this.checkedList = this.checkedList.filter((a: any) => a.name != item);
