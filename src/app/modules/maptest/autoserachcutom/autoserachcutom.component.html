@@ -1,22 +1,24 @@
 <div>
     <div class="input-group" style="width: 500px;">
-        <div class="input-group-prepend d-flex" *ngIf="checkedList.length>0">
+        <!-- <div class="input-group-prepend d-flex" *ngIf="checkedList.length>0">
             <span class="input-group-text  m-2 p-0" *ngFor="let list of checkedList; let i = index" id="">
                 <button type="button" class="btn-close btn-sm" aria-label="Close" (click)="remove(list?.name)"></button>
                 <span class="text-name px-1">{{list?.name}}</span>
                 </span>
-        </div>
+        </div> -->
         <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="filterBy()"
             (click)="showAll();showDropDown = true">
     </div>
-    <div class="drop-show" *ngIf="showDropDown"  style="width: max-content; min-width: 300px;">
+    <div class="drop-show" *ngIf="showDropDown" style="width: max-content; min-width: 300px;">
         <div class="d-flex justify-content-between">
             <div class="d-flex justify-content-start">
                 <p>Loading</p>
             </div>
-            <div class="d-flex justify-content-between" >
-                <span *ngIf="checkedList.length>0">{{checkedList.length}} Selected <button type="button" class="btn-close btn-sm" aria-label="Close" (click)="removeAll()"></button></span>
-                <button type="button" class="btn btn-primary" [disabled]="checkedList.length>0 ? null: true " (click)="showDropDown = false">Done</button>
+            <div class="d-flex justify-content-between">
+                <span *ngIf="checkedList.length>0">{{checkedList.length}} Selected <button type="button"
+                        class="btn-close btn-sm" aria-label="Close" (click)="removeAll()"></button></span>
+                <button type="button" class="btn btn-primary" [disabled]="checkedList.length>0 ? null: true "
+                    (click)="showDropDown = false">Done</button>
             </div>
         </div>
         <label *ngFor="let a of list; let i = index">
@@ -29,5 +31,83 @@
                     (click)="getSelectedValue(false,a.name,i)">remove</button>
             </div>
         </label>
+    </div>
+</div>
+<div>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item" *ngFor="let items of accordianList; let i = index">
+            <div class="accordion-header" id="panelsStayOpen-heading{{items?.keyValue}}">
+                <div class="d-flex accordion-button-wrapper justify-content-between" [ngClass]="{'active': items?.accordionOpen}" (click)="changeAccorCollapse(items?.keyValue);checkAccor()">
+                    <div class="d-flex">
+                        <button class="accordion-button collapsed" id="panelsStayOpen-heading-btn{{items?.keyValue}}" data-bs-toggle="collapse" 
+                            attr.data-bs-target="#panelsStayOpen-collapse{{items?.keyValue}}" aria-expanded="true"
+                            attr.aria-controls="panelsStayOpen-collapse{{items?.keyValue}}">
+                        </button>
+                        <span class="p-2 mt-1">
+                            {{items?.title}} {{items?.accordionOpen}}
+                        </span>
+                    </div>
+                    <div>
+                        <div class="form-check p-2 mt-1 d-flex flex-row" (click)="$event.stopPropagation();getCheckedValue(items?.keyValue)">
+                            <div style="margin-right: 30px;">
+                                <label class="form-check-label" for="flexCheckIndeterminate{{items?.keyValue}}">
+                                    Indeterminate checkbox
+                                </label>
+                            </div>
+                            <div >
+                                <input class="form-check-input" type="checkbox" [(ngModel)]="items.checked" id="flexCheckIndeterminate{{items?.keyValue}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="panelsStayOpen-collapse{{items?.keyValue}}" class="accordion-collapse collapse"
+                attr.aria-labelledby="panelsStayOpen-heading{{items?.keyValue}}">
+                <ul class="list-group p-0 accordion-body">
+                    <li class="list-group-item" *ngFor="let item of items?.childArray; let i = index">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                {{item?.title}}
+                            </div>
+                            <div class=" d-flex flex-row" (click)="childClicked(item?.keyValue,items?.keyValue)">
+                                <div style="margin-right: 30px;">
+                                    <label class="form-check-label" for="flexCheckIndeterminate{{item?.keyValue}}">
+                                        {{item?.keyValue}}
+                                    </label>
+                                </div>
+                                <div >
+                                    <input class="form-check-input" type="checkbox" [(ngModel)]="item.checked" id="flexCheckIndeterminate{{item?.keyValue}}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
     </div>
 </div>

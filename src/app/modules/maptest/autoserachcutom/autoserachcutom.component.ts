@@ -15,6 +15,49 @@ export class AutoserachcutomComponent implements OnInit {
   showDropDown: boolean = false;
   searchText: string = '';
   backup: any = [];
+  accordianList:any = [
+    {
+      title:'00013427 - Holder',
+      type:'A',
+      keyValue:'0119610',
+      childArray:[
+        {
+          title:'Abc',
+          keyValue:'08987'
+        },
+        {
+          title:'Qwe',
+          keyValue:'06546'
+        },{
+          title:'Cvw',
+          keyValue:'00777'
+        },
+        {
+          title:'Asd',
+          keyValue:'1222'
+        }
+      ]
+    },
+    {
+      title:'Procuration DVG',
+      type:'B',
+      keyValue:'0119611',
+      childArray:[
+        {
+          title:'Asq',
+          keyValue:'123123'
+        },
+        {
+          title:'Vdq',
+          keyValue:'41123'
+        },
+        {
+          title:'Gryt',
+          keyValue:'678546'
+        }
+      ]
+    }
+  ]
   ngOnInit(): void {
     this.list =
       [
@@ -25,6 +68,7 @@ export class AutoserachcutomComponent implements OnInit {
         { name: 'France', checked: false }
       ];
     this.backup = [...this.list];
+    this.accordionPrcess();
   }
 
   filterBy() {
@@ -57,7 +101,7 @@ export class AutoserachcutomComponent implements OnInit {
   alignData(){
     let selected:any = this.list.filter((a:any)=>a.checked);
     let notSelected:any = this.list.filter((a:any)=>!a.checked);
-    this.list = [...selected,...notSelected]
+    this.list = [...this.checkedList,...notSelected]
   }
   backupSet(Object:any){
     let isExist = this.backup.filter((a: any) => a.name == Object.name);
@@ -90,5 +134,45 @@ export class AutoserachcutomComponent implements OnInit {
       isExist[0].checked = false;
     }
     this.alignData();    
+  }
+
+
+  accordionPrcess(){
+    this.accordianList.map((a:any)=>{
+      a.childArray.map((c:any)=>c.checked = false);
+      a.checked = false;
+      a.accordionOpen = false;
+      return a;
+    });
+  }
+  changeAccorCollapse(keyValue:any){
+    let dyBtn = document.getElementById(`panelsStayOpen-heading-btn${keyValue}`) as HTMLElement;
+    dyBtn.click();
+    let selected = this.accordianList.filter((a:any) => a.keyValue == keyValue);
+    if(selected && selected.length > 0){
+      selected[0].accordionOpen = dyBtn.getAttribute('aria-expanded') == 'true' ? true : false;
+    }
+  }
+  checkAccor(){
+    console.log('accordianList checkAccor',this.accordianList);
+  }
+  getCheckedValue(keyValue:any){
+    let selected = this.accordianList.filter((a:any) => a.keyValue == keyValue);
+    if(selected && selected.length > 0){
+      selected[0].childArray.map((a:any)=> a.checked = !selected[0].checked);
+    }
+  }
+  childClicked(childkeyValue:any,parentkeyValue:any){
+    let parentselected = this.accordianList.filter((a:any) => a.keyValue == parentkeyValue);
+    if(parentselected && parentselected.length > 0){
+      setTimeout(() => {
+        let childNotSeleted = parentselected[0].childArray.filter((b:any)=>!b.checked);
+        if(childNotSeleted && childNotSeleted.length == 0){
+          parentselected[0].checked = true
+        }else if(childNotSeleted && childNotSeleted.length > 0){
+          parentselected[0].checked = false
+        }
+      }, 100);
+    }    
   }
 }
