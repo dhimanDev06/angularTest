@@ -1,0 +1,6 @@
+<!-- <p>{{data | json}}</p> -->
+
+<div *ngFor="let item of data.children">
+    <!-- {{item.name}} -->
+    <app-recursive-table-view [data]="item"></app-recursive-table-view>
+</div>

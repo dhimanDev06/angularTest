@@ -1,0 +1,8 @@
+<ul>
+    <li>
+        {{data.name}}
+        <div *ngFor="let item of data.children">
+        <app-recursive-table-view [data]="item" *ngIf="item.children"></app-recursive-table-view>
+        </div>
+    </li>
+</ul>
