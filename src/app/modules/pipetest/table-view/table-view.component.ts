@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TableViewComponent implements OnInit {
 
   constructor() { }
-
+  level:number = 1;
   data:any = {
     title:'main View',
     children:[

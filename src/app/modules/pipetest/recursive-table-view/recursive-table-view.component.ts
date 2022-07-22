@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class RecursiveTableViewComponent implements OnInit {
 
   @Input() data:any;
+  @Input() level:any; 
   constructor() { }
 
   ngOnInit(): void {

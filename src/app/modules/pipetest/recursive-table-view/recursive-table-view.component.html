@@ -1,8 +1,8 @@
 <ul>
     <li>
-        {{data.name}}
+        {{data.name}} -- level:{{level}}
         <div *ngFor="let item of data.children">
-        <app-recursive-table-view [data]="item" *ngIf="item.children"></app-recursive-table-view>
+        <app-recursive-table-view [data]="item" [level]="level+1" *ngIf="item.children"></app-recursive-table-view>
         </div>
     </li>
 </ul>
