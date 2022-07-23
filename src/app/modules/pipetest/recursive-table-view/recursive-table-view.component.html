@@ -1,8 +1,10 @@
 <ul>
     <li>
-        {{data.name}} -- level:{{level}}
-        <div *ngFor="let item of data.children">
-        <app-recursive-table-view [data]="item" [level]="level+1" *ngIf="item.children"></app-recursive-table-view>
+        <span (click)="check(data)">{{data.name}} -- level:{{level}}</span> 
+        <div *ngIf="data.show">
+            <div *ngFor="let item of data.children">
+                <app-recursive-table-view [data]="item" [level]="level+1" *ngIf="item.children"></app-recursive-table-view>
+            </div>
         </div>
     </li>
 </ul>
