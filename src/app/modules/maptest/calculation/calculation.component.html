@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <h1>Invest calculator</h1>
+    </div>
+    <div class="d-flex justify-content-evenly">
+        <div>
+            <label for="mainamount" class="form-label d-flex justify-content-center">Invest Amount</label>
+            <input type="text" class="form-control" [(ngModel)]="calculationObj.mainamount" id="mainamount" placeholder="Invest Amount">
+        </div>
+        <div>
+            <label for="interest" class="form-label d-flex justify-content-center">Interest %</label>
+            <input type="text" class="form-control" [(ngModel)]="calculationObj.interest" id="interest" placeholder="Interest %">
+        </div>
+        <div>
+            <label for="year" class="form-label d-flex justify-content-center">Year</label>
+            <input type="text" class="form-control" [(ngModel)]="calculationObj.year" id="year" placeholder="Year">
+        </div>
+    </div>
+    <div class="d-flex justify-content-center mt-4">
+        <input type="button" value="Calculate" (click)="goForCalculate()" class="btn btn-primary">
+    </div>
+    <div class="card mt-4" *ngIf="mainArrayObj.length > 0">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Month</th>
+                <th scope="col">Invest Amount</th>
+                <th scope="col">Interest</th>
+                <th scope="col">Total Interest</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of mainArrayObj; let i = index">
+                <th scope="row">{{i +1}}</th>
+                <td>{{item.year}}</td>
+                <td>{{item.mainamount}}</td>
+                <td>{{item.interest}}</td>
+                <td>{{item.totalinterest}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

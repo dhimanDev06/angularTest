@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutoserachComponent } from './autoserach/autoserach.component';
 import { AutoserachcutomComponent } from './autoserachcutom/autoserachcutom.component';
+import { CalculationComponent } from './calculation/calculation.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path:'autocustom', component : AutoserachcutomComponent
+  },
+  {
+    path:'invest', component : CalculationComponent
   }
 ];
 

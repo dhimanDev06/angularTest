@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AutoserachComponent } from './autoserach/autoserach.component';
 import { AutoserachcutomComponent } from './autoserachcutom/autoserachcutom.component';
 import { FilterbycheckPipe } from './filterbycheck.pipe';
+import { CalculationComponent } from './calculation/calculation.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FilterbycheckPipe } from './filterbycheck.pipe';
     ConcatmapComponent,
     AutoserachComponent,
     AutoserachcutomComponent,
-    FilterbycheckPipe
+    FilterbycheckPipe,
+    CalculationComponent
   ],
   imports: [
     CommonModule,
