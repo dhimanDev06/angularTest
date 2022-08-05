@@ -1,0 +1,14 @@
+<button id="increment" (click)="increment()">Increment</button>
+
+<div>Current Count: {{ count$ | async }}</div>
+
+<button id="decrement" (click)="decrement()">Decrement</button>
+
+<button id="reset" (click)="reset()">Reset Counter</button>
+<br>
+<br>
+<br>
+
+<a href="javascript:void(0)" (click)="goToPage('page1')">Go to page 1</a>
+<br>
+<a href="javascript:void(0)" (click)="goToPage('page2')">Go to page 2</a>
