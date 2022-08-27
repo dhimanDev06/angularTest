@@ -10,5 +10,7 @@ const _counterReducer = createReducer(initialState,
 );
 
 export function counterReducer(state:any, action:any) {
+  console.log('counterReducer', typeof state,state," - ",action);
+  
   return _counterReducer(state, action);
 }

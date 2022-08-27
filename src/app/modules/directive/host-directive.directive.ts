@@ -4,7 +4,7 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
   selector: '[appHostDirective]'
 })
 export class HostDirectiveDirective {
-  @HostBinding('value') txt:any = '';
+  @HostBinding('value') txt:any = 'Basic';
   constructor() { }
 
   @HostListener('mouseenter') addtxt() {

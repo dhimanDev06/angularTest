@@ -13,23 +13,26 @@ export class BasicComponent implements OnInit {
 
   count$: Observable<number>;
 
-  constructor(private store: Store<{ count: number }>,private router:Router ) {
-    this.count$ = store.pipe(select('count'));
+  constructor(
+    private storeC: Store<{ count: number }>,
+    private router:Router 
+    ) {
+    this.count$ = storeC.pipe(select('count'));    
   }
 
   goToPage(url:string){    
     this.router.navigateByUrl(`store/${url}`);
   }
   increment() {
-    this.store.dispatch(increment());
+    this.storeC.dispatch(increment());
   }
 
   decrement() {
-    this.store.dispatch(decrement());
+    this.storeC.dispatch(decrement());
   }
 
   reset() {
-    this.store.dispatch(reset());
+    this.storeC.dispatch(reset());
   }
   ngOnInit(): void {
   }
