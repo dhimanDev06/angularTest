@@ -25,6 +25,18 @@ const routes: Routes = [
   {
     path: 'store',
     loadChildren: () => import('./modules/storeprac/storeprac.module').then(m => m.StorepracModule)
+  },
+  {
+    path: 'forms',
+    loadChildren: () => import('./modules/form/form.module').then(m => m.FormModule)
+  },
+  {
+    path: 'transloco',
+    loadChildren: ()=> import('./modules/transloco/transloco.module').then(m =>m.myTranslocoModule)
+  },
+  {
+    path: 'ngxtrans',
+    loadChildren: ()=> import('./modules/ngxtrans/ngxtrans.module').then(m =>m.NgxtransModule)
   }
 ];
 @NgModule({
