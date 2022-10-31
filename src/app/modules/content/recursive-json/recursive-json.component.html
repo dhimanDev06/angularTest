@@ -1,0 +1,9 @@
+
+<div>
+    <span (click)="check(data)" [ngClass]="{'showDown': data.show, 'showSide': !data.show}">{{data.name}}</span> 
+</div>
+<div *ngIf="data.show" style="margin-left: 10px;">
+    <div *ngFor="let item of data.children">
+        <app-recursive-json [data]="item" [level]="level+1"></app-recursive-json>
+    </div>
+</div>

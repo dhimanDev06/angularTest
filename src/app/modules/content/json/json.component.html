@@ -1,0 +1,14 @@
+
+<!-- {{customJson | json }}
+<br>
+<br>
+<br>
+<br> -->
+
+<div *ngFor="let item of sampleJson.children">
+    <app-recursive-json [data]="item" [level]="level"></app-recursive-json>
+</div>
+<br>
+<br>
+<br>
+{{sampleJson | json }}

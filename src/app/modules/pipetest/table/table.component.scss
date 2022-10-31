@@ -1,0 +1,13 @@
+#custom-table {
+    background-color: aqua;
+    width: 200px !important;
+    height: 200px !important;
+
+    tr:nth-child(1) {
+        background-color: aquamarine !important;
+    }
+
+    tr:nth-child(2) td:nth-child(1) {
+        position: fixed
+    }
+}

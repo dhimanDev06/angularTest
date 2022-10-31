@@ -7,13 +7,15 @@ import { CommonService } from './common.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TableViewComponent } from './table-view/table-view.component';
 import { RecursiveTableViewComponent } from './recursive-table-view/recursive-table-view.component';
+import { TableComponent } from './table/table.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     TableViewComponent,
-    RecursiveTableViewComponent
+    RecursiveTableViewComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
