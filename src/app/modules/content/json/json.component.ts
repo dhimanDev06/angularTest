@@ -8,18 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class JsonComponent implements OnInit {
 
   constructor() { }
-  xmlJson = {
-    "accountSetmsg":{
-      "msgHeader":{
-        "srcAccCode":{
-          "code":"S2I",
-          "codingSchema":"S2I"
-        },
-        "asofDate":"10-31-2022",
-        "prcDate":"10-31-2022"
-      }
-    }
-  };
+
   level:number = 1;
 
   sampleJson :any = {
@@ -70,27 +59,30 @@ export class JsonComponent implements OnInit {
   customJson :any = {
   };
   ngOnInit(): void {
-    for (const [key, value] of Object.entries(this.xmlJson)) {
-      console.log(`${key}(1): ${value} -> ${typeof(value)}`);
-      let v = value;
-      if(typeof(value) === "object"){
-        this.customJson = {
-          name : key,
-          value : null,
-          show : false,
-          children : []
-        }
-        this.recuresivCall(v);
-      }else if(typeof(value) === "string"){
-
-      }
-    }
+    this.customJson = this.cusrecursive(this.xmlJson);
     console.log("customJson",this.customJson);
   }
 
+  xmlJson = {
+    "accountSetmsg":{
+      "msgHeader0":{
+        "asofDate1":"10-31-2022",
+        "srcAccCode1":{
+          "code2":"S2I",
+          "test2":{
+            "code3":"S2I",
+            "codingSchema3":"S2I"
+          },
+          "codingSchema2":"S2I",
+        },
+        "prcDate1":"10-31-2022"
+      }
+    }
+  };
   recuresivCall(v){
+    let a = 0
     for (const [key, value] of Object.entries(v)) {
-      console.log(`${key}(2): ${value} -> ${typeof(value)}`);
+      ++a;
       let vany = value;
       if(typeof(value) === "object"){
         this.recuresivCall(vany);
@@ -100,26 +92,49 @@ export class JsonComponent implements OnInit {
           value : null,
           children : []
         }
-        console.log("level",this.customJson.children.length,this.customJson.children);
-        // break;
-        
-        this.customJson.children.push(children);
-        console.log("children",children);
-      }else if(typeof(value) === "string"){
+        // if(a == 1){
+          this.customJson.children.push(children);
+        // }
+        console.log("mychildren",children);
+      }else{
         let children = {
           name : key,
           show : false,
           value : value,
           children : null
         }
-        this.customJson.children.push(children);
+        // if(a == 1){
+          this.customJson.children.push(children);
+        // }
         console.log("children",children);
 
       }
     }
 
-    console.log("customJson",this.customJson);
+    console.log("customJson "+a,this.customJson);
 
   }
 
+  cusrecursive(obj) {
+    let customJson = []
+    for (var key in obj) {
+      if (typeof (obj[key]) === "object") {
+        let tempobj = {
+          name: key,
+          value: null,
+          show: false,
+          children: []
+        }
+        tempobj.children = this.cusrecursive(obj[key])
+        customJson.push(tempobj)
+      } else {
+        customJson.push({
+          name: key,
+          value: obj[key],
+          children: null
+        })
+      }
+    }
+    return customJson;
+  }
 }

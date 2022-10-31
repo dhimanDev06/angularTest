@@ -4,8 +4,7 @@
 <br>
 <br>
 <br> -->
-
-<div *ngFor="let item of sampleJson.children">
+<div *ngFor="let item of customJson">
     <app-recursive-json [data]="item" [level]="level"></app-recursive-json>
 </div>
 <br>
