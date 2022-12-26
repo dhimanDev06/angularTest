@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
       concatMap((result:any) => 
       this.api.getList(result.data[2].id))
     ).subscribe((result1) => {
+      
       console.log(result1);
     });
   }
